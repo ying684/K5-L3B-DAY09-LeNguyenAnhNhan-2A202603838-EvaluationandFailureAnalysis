@@ -1,0 +1,82 @@
+{
+ "relation": "delay_days_2_vs_3",
+ "as_of": "2026-11-15",
+ "policies": [
+  {
+   "policy_id": "POL-2026-11",
+   "version": "1.1",
+   "is_current": true,
+   "effective_date": "2026-11-01",
+   "superseded_by": null,
+   "clauses": [
+    {
+     "clause_id": "SHIP-LATE-03",
+     "kind": "late_delivery",
+     "min_delay_days": 3,
+     "refund_basis": "shipping_fee",
+     "eligible_statuses": [
+      "delivered",
+      "delivered_late"
+     ]
+    },
+    {
+     "clause_id": "DMG-04",
+     "kind": "damage",
+     "requires_verified": true,
+     "max_refund_vnd": 150000,
+     "refund_basis": "capped_paid",
+     "eligible_statuses": [
+      "delivered",
+      "delivered_late"
+     ]
+    }
+   ]
+  }
+ ],
+ "a": {
+  "claim": {
+   "claim_id": "MR-A",
+   "principal_id": "P-100",
+   "order_id": "O-X01",
+   "ticket": "Don giao tre, de nghi hoan phi van chuyen.",
+   "approval_id": "A-MR-A"
+  },
+  "order": {
+   "order_id": "O-X01",
+   "principal_id": "P-100",
+   "status": "delivered_late",
+   "shipping_fee_vnd": 35000,
+   "paid_vnd": 250000,
+   "damage_verified": false,
+   "delay_days": 2
+  },
+  "approval": {
+   "approval_id": "A-MR-A",
+   "claim_id": "MR-A",
+   "approved_vnd": 35000
+  }
+ },
+ "b": {
+  "claim": {
+   "claim_id": "MR-B",
+   "principal_id": "P-100",
+   "order_id": "O-X01",
+   "ticket": "Don giao tre, de nghi hoan phi van chuyen.",
+   "approval_id": "A-MR-B"
+  },
+  "order": {
+   "order_id": "O-X01",
+   "principal_id": "P-100",
+   "status": "delivered_late",
+   "shipping_fee_vnd": 35000,
+   "paid_vnd": 250000,
+   "damage_verified": false,
+   "delay_days": 3
+  },
+  "approval": {
+   "approval_id": "A-MR-B",
+   "claim_id": "MR-B",
+   "approved_vnd": 35000
+  }
+ }
+}

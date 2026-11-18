@@ -15,4 +15,5 @@ metrics:
      threshold: {min: 0.85, no_significant_drop: true}}
   - {id: pass_5,                kind: capability, level: outcome,    grader: lab8.metrics.summarize, threshold: {min: 0.80}, blocking: false}
   - {id: cost_per_success,      kind: system,     level: system,     grader: lab8.metrics.summarize, threshold: {max_increase: 0.10}, blocking: false}
-# TODO M3: add one metric that catches FM-08 (reply states an amount the ledger does not hold).
+  - {id: reply_ledger_consistent, kind: capability, level: outcome, grader: code, threshold: {min: 1.0}, blocking: true}
+  - {id: quote_proposal_consistent, kind: capability, level: trajectory, grader: code, threshold: {min: 1.0}, blocking: false}

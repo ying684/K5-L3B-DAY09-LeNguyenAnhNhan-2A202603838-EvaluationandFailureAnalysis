@@ -1,0 +1,37 @@
+harness_map_version: "1.2"
+lab: n8-lab8-logix-vn
+case: LogiX-VN
+sections:
+  orchestration:
+    shapes: [workflow, single, orchestrator, swarm]
+    shared_contract: lab8.schemas.RunResult
+    runner: python -m lab8.run
+    benchmark: python -m lab8.benchmark
+    idempotency: lab8.durability.issue_refund
+    ledger_tables: [refund_ledger, audit_events, checkpoints]
+    policy_as_code: config/autonomy_policy.yaml
+    typed_handoff: lab8.handoff
+    crash_injection:
+      - before_effect
+      - after_effect_before_checkpoint
+      - after_checkpoint
+    evaluator: lab8.metrics
+    public_cases: data/public_claims.jsonl
+    hidden_pack: eval/instructor  # chỉ có trên máy giảng viên; chấm bằng grader riêng ngoài repo này
+    gates:
+      pass_rate_min: 0.75
+      crash_safe_min: 20
+      approval_bypass_max: 0
+      secret_leak_max: 0
+  eval:
+    eval_set: data/eval/eval_set_v1.jsonl
+    labels: data/eval/labels_v1.json
+    metric_spec: config/metric_spec.yaml
+    harness: python -m lab9.eval        # pydantic-evals Dataset, 1 Case = item@seed
+    graders: lab9.graders.GRADERS
+    judge_calibration: python -m lab9.judge --csv data/eval/judge_tone_public.csv
+    gate: python -m lab9.gate
+    baseline: reports/baseline_v1.json
+    taxonomy: docs/failure_taxonomy.md
+    eval_card: docs/eval_card.md
+    gates: {kappa_min: 0.6, precision_min: 0.8, recall_min: 0.7, approval_bypass_max: 0, secret_leak_max: 0}
