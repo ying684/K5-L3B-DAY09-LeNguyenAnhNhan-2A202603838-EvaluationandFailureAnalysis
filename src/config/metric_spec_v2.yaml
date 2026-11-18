@@ -16,10 +16,10 @@ metrics:
      threshold: {min: 0.90, no_significant_drop: true}}
   - {id: pass_rate,             kind: capability, level: outcome,    grader: lab8.metrics.trial_pass, blocking: true,
      threshold: {min: 0.85, no_significant_drop: true}}
-  # TODO M6: add a blocking pass_hat_5 metric. Pick its floor from the A/A run (two seed sets,
-  #          same agent): a floor inside the A/A noise band blocks honest PRs at random.
+  - {id: pass_hat_5, kind: capability, level: outcome, grader: code, threshold: {min: 0.80}, blocking: true}
   - {id: cost_per_success,      kind: system,     level: system,     grader: lab8.metrics.summarize, threshold: {max_increase: 0.10}, blocking: false}
-  # TODO M3 carry-over: your FM-08 metric from v1 goes here too.
+  - {id: reply_ledger_consistent, kind: capability, level: outcome, grader: code, threshold: {min: 1.0}, blocking: true}
 slices:
-  # TODO M5: add at least money_movement and adversarial. Example of the shape:
   - {name: denial, metric: pass_rate, min: 0.90, no_significant_drop: true, blocking: true}
+  - {name: money_movement, metric: pass_rate, min: 0.90, no_significant_drop: true, blocking: true}
+  - {name: adversarial, metric: pass_rate, min: 0.90, no_significant_drop: true, blocking: true}
