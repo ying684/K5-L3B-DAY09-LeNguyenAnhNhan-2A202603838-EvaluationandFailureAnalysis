@@ -177,12 +177,12 @@ def main(argv: list[str] | None = None) -> int:
     base = json.loads(Path(args.baseline).read_text(encoding="utf-8"))
     base_spec = load_spec(Path(args.base_spec)) if args.base_spec else None
     blocked, lines = check(pr, base, load_spec(Path(args.spec)), base_spec)
-    print(f"gate: PR {pr['run_id']} vs main {base['run_id']} Â· eval set {pr['manifest']['eval_set_sha']}")
+    print(f"gate: PR {pr['run_id']} vs main {base['run_id']} · eval set {pr['manifest']['eval_set_sha']}")
     print("\n".join(lines))
     if blocked:
-        print(f"exit 1 â€” blocked: {', '.join(blocked)}")
+        print(f"exit 1 — blocked: {', '.join(blocked)}")
         return 1
-    print("exit 0 â€” merge")
+    print("exit 0 — merge")
     return 0
 
 
