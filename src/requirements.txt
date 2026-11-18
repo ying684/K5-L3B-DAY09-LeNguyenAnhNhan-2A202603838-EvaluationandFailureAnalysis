@@ -1,0 +1,3 @@
+# Tested on Python 3.11–3.13, Windows / macOS / Linux.
+pytest>=8.3.4,<9
+PyYAML>=6.0.2,<7

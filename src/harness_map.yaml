@@ -1,0 +1,25 @@
+harness_map_version: "1.1"
+lab: n8-lab8-logix-vn
+case: LogiX-VN
+sections:
+  orchestration:
+    shapes: [workflow, single, orchestrator, swarm]
+    shared_contract: lab8.schemas.RunResult
+    runner: python -m lab8.run
+    benchmark: python -m lab8.benchmark
+    idempotency: lab8.durability.issue_refund
+    ledger_tables: [refund_ledger, audit_events, checkpoints]
+    policy_as_code: config/autonomy_policy.yaml
+    typed_handoff: lab8.handoff
+    crash_injection:
+      - before_effect
+      - after_effect_before_checkpoint
+      - after_checkpoint
+    evaluator: lab8.metrics
+    public_cases: data/public_claims.jsonl
+    hidden_pack: eval/instructor  # chỉ có trên máy giảng viên; chấm bằng grader riêng ngoài repo này
+    gates:
+      pass_rate_min: 0.75
+      crash_safe_min: 20
+      approval_bypass_max: 0
+      secret_leak_max: 0

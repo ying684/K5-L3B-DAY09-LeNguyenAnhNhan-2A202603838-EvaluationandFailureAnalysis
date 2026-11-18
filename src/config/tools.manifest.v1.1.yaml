@@ -1,0 +1,41 @@
+manifest_version: "1.1"
+tools:
+  - name: get_claim_view
+    mutates: false
+    host_only: false
+    description: Claim fields the agent may see. Strips parent_secret and raw headers.
+  - name: lookup_order
+    mutates: false
+    host_only: false
+    description: Operational order fields for the calling principal. No phone, address, internal note, or item name.
+  - name: lookup_policy
+    mutates: false
+    host_only: false
+    description: Current policy only (is_current and effective_date <= as_of).
+  - name: lookup_refund_history
+    mutates: false
+    host_only: false
+    description: Total already refunded for an order the principal owns, across all claims. No other claim text or ids.
+  - name: get_clause
+    mutates: false
+    host_only: false
+    description: Any clause by id, including superseded. Caller must check is_current.
+  - name: compute_compensation
+    mutates: false
+    host_only: false
+    implemented_by: code
+    description: Deterministic quote. Do not replace this with an LLM.
+  - name: issue_refund
+    mutates: true
+    host_only: true
+    description: Ledger write. Workers must not receive this tool.
+  - name: append_audit
+    mutates: true
+    host_only: true
+    description: Audit write used by the host.
+orchestration:
+  shapes: [workflow, single, orchestrator, swarm]
+  handoff_contract: handoff.v1
+  idempotency: refund_ledger.idempotency_key
+  policy: config/autonomy_policy.yaml
+  evaluator: lab8.metrics

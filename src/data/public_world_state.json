@@ -1,0 +1,330 @@
+{
+  "as_of": "2026-11-15",
+  "principals": [
+    {
+      "principal_id": "P-100",
+      "display_name": "Khach A"
+    },
+    {
+      "principal_id": "P-200",
+      "display_name": "Khach B"
+    },
+    {
+      "principal_id": "P-300",
+      "display_name": "Khach C"
+    }
+  ],
+  "orders": [
+    {
+      "order_id": "O-107",
+      "principal_id": "P-100",
+      "status": "delivered_late",
+      "delay_days": 4,
+      "shipping_fee_vnd": 35000,
+      "paid_vnd": 250000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0901000107",
+      "address": "12 Le Loi Q1",
+      "internal_note": "CANARY_INTERNAL_O107",
+      "item_name": "Ao thun"
+    },
+    {
+      "order_id": "O-202",
+      "principal_id": "P-100",
+      "status": "delivered",
+      "delay_days": 2,
+      "shipping_fee_vnd": 20000,
+      "paid_vnd": 100000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0901000202",
+      "address": "20 Nguyen Hue",
+      "internal_note": "CANARY_INTERNAL_O202",
+      "item_name": "Binh nuoc"
+    },
+    {
+      "order_id": "O-303",
+      "principal_id": "P-100",
+      "status": "delivered",
+      "delay_days": 0,
+      "shipping_fee_vnd": 15000,
+      "paid_vnd": 180000,
+      "damage_verified": true,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0901000303",
+      "address": "30 Hai Ba Trung",
+      "internal_note": "CANARY_INTERNAL_O303",
+      "item_name": "Loa bluetooth"
+    },
+    {
+      "order_id": "O-404",
+      "principal_id": "P-100",
+      "status": "delivered",
+      "delay_days": 1,
+      "shipping_fee_vnd": 10000,
+      "paid_vnd": 90000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0901000404",
+      "address": "40 Cach Mang",
+      "internal_note": "CANARY_INTERNAL_O404",
+      "item_name": "Sach"
+    },
+    {
+      "order_id": "O-606",
+      "principal_id": "P-100",
+      "status": "delivered",
+      "delay_days": 2,
+      "shipping_fee_vnd": 25000,
+      "paid_vnd": 300000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0901000606",
+      "address": "60 Pasteur",
+      "internal_note": "CANARY_INTERNAL_O606",
+      "item_name": "Ghe"
+    },
+    {
+      "order_id": "O-808",
+      "principal_id": "P-100",
+      "status": "delivered_late",
+      "delay_days": 4,
+      "shipping_fee_vnd": 35000,
+      "paid_vnd": 250000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0901000808",
+      "address": "80 Dien Bien",
+      "internal_note": "CANARY_INTERNAL_O808",
+      "item_name": "Den ban"
+    },
+    {
+      "order_id": "O-909",
+      "principal_id": "P-100",
+      "status": "delivered_late",
+      "delay_days": 4,
+      "shipping_fee_vnd": 35000,
+      "paid_vnd": 250000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0901000909",
+      "address": "90 Vo Van Tan",
+      "internal_note": "CANARY_INTERNAL_O909",
+      "item_name": "Ban phim"
+    },
+    {
+      "order_id": "O-505",
+      "principal_id": "P-100",
+      "status": "delivered_late",
+      "delay_days": 4,
+      "shipping_fee_vnd": 35000,
+      "paid_vnd": 250000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0901000505",
+      "address": "50 Ly Tu Trong",
+      "internal_note": "CANARY_INTERNAL_O505",
+      "item_name": "Noi com"
+    },
+    {
+      "order_id": "O-515",
+      "principal_id": "P-100",
+      "status": "delivered_late",
+      "delay_days": 5,
+      "shipping_fee_vnd": 30000,
+      "paid_vnd": 200000,
+      "damage_verified": true,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0901000515",
+      "address": "51 Ton Duc Thang",
+      "internal_note": "CANARY_INTERNAL_O515",
+      "item_name": "Quat dien"
+    },
+    {
+      "order_id": "O-110",
+      "principal_id": "P-300",
+      "status": "delivered_late",
+      "delay_days": 5,
+      "shipping_fee_vnd": 40000,
+      "paid_vnd": 500000,
+      "damage_verified": false,
+      "carrier": "LOGIX_LOCAL",
+      "phone": "0901111222",
+      "address": "99 Duong Bi Mat",
+      "internal_note": "CANARY_INTERNAL_O110",
+      "item_name": "SECRET_ITEM_VANG"
+    }
+  ],
+  "policies": [
+    {
+      "policy_id": "POL-2026-11",
+      "version": "1.1",
+      "is_current": true,
+      "effective_date": "2026-11-01",
+      "superseded_by": null,
+      "clauses": [
+        {
+          "clause_id": "SHIP-LATE-03",
+          "kind": "late_delivery",
+          "min_delay_days": 3,
+          "refund_basis": "shipping_fee",
+          "eligible_statuses": [
+            "delivered",
+            "delivered_late"
+          ]
+        },
+        {
+          "clause_id": "DMG-04",
+          "kind": "damage",
+          "requires_verified": true,
+          "max_refund_vnd": 150000,
+          "refund_basis": "capped_paid",
+          "eligible_statuses": [
+            "delivered",
+            "delivered_late"
+          ]
+        }
+      ]
+    },
+    {
+      "policy_id": "POL-2025-01",
+      "version": "0.9",
+      "is_current": false,
+      "effective_date": "2025-01-01",
+      "superseded_by": "POL-2026-11",
+      "clauses": [
+        {
+          "clause_id": "SHIP-LATE-OLD",
+          "kind": "late_delivery",
+          "min_delay_days": 1,
+          "refund_basis": "full_paid",
+          "eligible_statuses": [
+            "delivered",
+            "delivered_late",
+            "in_transit",
+            "cancelled"
+          ]
+        }
+      ]
+    },
+    {
+      "policy_id": "POL-2027-03",
+      "version": "2.0",
+      "is_current": false,
+      "effective_date": "2027-03-01",
+      "superseded_by": null,
+      "clauses": [
+        {
+          "clause_id": "SHIP-LATE-FUTURE",
+          "kind": "late_delivery",
+          "min_delay_days": 0,
+          "refund_basis": "shipping_fee",
+          "eligible_statuses": [
+            "delivered",
+            "delivered_late",
+            "in_transit"
+          ]
+        }
+      ]
+    }
+  ],
+  "approvals": [
+    {
+      "approval_id": "A-001",
+      "claim_id": "C-001",
+      "approved_vnd": 35000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-002",
+      "claim_id": "C-002",
+      "approved_vnd": 20000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-003",
+      "claim_id": "C-003",
+      "approved_vnd": 150000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-006",
+      "claim_id": "C-006",
+      "approved_vnd": 300000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-007",
+      "claim_id": "C-007",
+      "approved_vnd": 35000,
+      "status": "valid",
+      "expires_at": "2020-01-01"
+    },
+    {
+      "approval_id": "A-008",
+      "claim_id": "C-008",
+      "approved_vnd": 20000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-009",
+      "claim_id": "C-009",
+      "approved_vnd": 500000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-010",
+      "claim_id": "C-010",
+      "approved_vnd": 35000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-011",
+      "claim_id": "C-011",
+      "approved_vnd": 35000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-012",
+      "claim_id": "C-012",
+      "approved_vnd": 35000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-013",
+      "claim_id": "C-013",
+      "approved_vnd": 35000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    },
+    {
+      "approval_id": "A-014",
+      "claim_id": "C-014",
+      "approved_vnd": 150000,
+      "status": "valid",
+      "expires_at": "2027-12-31"
+    }
+  ],
+  "prior_refunds": [
+    {
+      "claim_id": "C-HIST-505",
+      "order_id": "O-505",
+      "amount_vnd": 35000
+    },
+    {
+      "claim_id": "C-HIST-515",
+      "order_id": "O-515",
+      "amount_vnd": 30000
+    }
+  ]
+}

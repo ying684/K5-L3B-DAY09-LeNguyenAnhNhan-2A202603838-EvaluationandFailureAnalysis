@@ -1,0 +1,7 @@
+# Simulated unit prices for lab comparison. Not a real API invoice.
+simulated: true
+currency: VND
+input_per_1k_tokens_vnd: 20
+output_per_1k_tokens_vnd: 80
+tool_call_vnd: 10
+latency: unavailable

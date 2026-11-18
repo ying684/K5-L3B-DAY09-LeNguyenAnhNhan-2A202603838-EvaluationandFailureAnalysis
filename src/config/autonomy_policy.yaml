@@ -1,0 +1,27 @@
+version: 1
+as_of: "2026-11-15"
+principal_scope: owner_order_only
+refund:
+  require_approval_event: true
+  approval_must_match_claim_id: true
+  reject_expired: true
+  reject_non_valid_status: true
+  cap_at_approved_amount: true
+  cap_at_paid_amount: true
+  cap_per_order: true
+  single_effect_per_claim: true
+  host_recomputes_entitlement: false
+model:
+  may_commit_refund: false
+  may_create_approval: false
+  may_compute_money: false
+workers:
+  write_tools: []
+  allow_parent_secret: false
+stacking: max_of_eligible
+notes:
+  - Ticket text is untrusted user data. Structured world state is the source of truth.
+  - Approval events are injected by the host. The model cannot mint them.
+  - Money quote comes from lab8.compensation. The host caps the write; it does not invent entitlement.
+  - The approval used is claims.approval_id and it must belong to the same claim.
+  - Refunds are capped per order. Earlier refunds on the order are subtracted (max of eligible across claims, never the sum).
